@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingActivity">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#1E88E5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIcon="@drawable/ic_nav_menu_icon"/>
+
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="280dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:text="Do you want to mute Notification"
+                android:textSize="16sp"
+                android:paddingLeft="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+            <Switch
+                android:id="@+id/switch_mute"
+                android:layout_width="80dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <View
+                android:id="@+id/switch_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/textView11"
+                />
+
+            <TextView
+                android:id="@+id/reset_password_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Reset Password"
+                android:paddingLeft="16sp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/switch_view"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <View
+                android:id="@+id/reset_password_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/reset_password_tv"
+                />
+
+
+            <FrameLayout
+                android:id="@+id/reset_password_main_frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="620dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/reset_password_view"
+                tools:layout_editor_absoluteX="0dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+       <group android:checkableBehavior="single">
+           <item
+               android:id="@+id/nav_home"
+               android:title="Home"
+               android:icon="@drawable/ic_home"
+               />
+       </group>
+
+
+    <item android:title="Patient">
+        <menu>
+            <group android:checkableBehavior="single">
+                 <item
+                    android:id="@+id/nav_current_patient"
+                    android:title="Current Patient"
+                     android:icon="@drawable/current_patient"
+                    />
+                <item
+                    android:id="@+id/nav_consulted_patient"
+                    android:title="Consulted Patient"
+                    android:icon="@drawable/consulted"
+                    />
+                <item
+                    android:id="@+id/nav_appoitments"
+                    android:title="Appointments"
+                    android:icon="@drawable/appointment"
+                    />
+            </group>
+         </menu>
+    </item>
+
+    <item android:title="Profile">
+        <menu>
+            <group
+            android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_profile"
+                    android:title="Profile"
+                    android:icon="@drawable/ic_person"
+                    />
+                <item
+                    android:id="@+id/nav_account"
+                    android:title="Account"
+                    android:icon="@drawable/ic_account_balance"
+                    />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Other">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_setting"
+                    android:title="Setting"
+                    android:icon="@drawable/ic_settings"
+                    />
+                <item
+                    android:id="@+id/nav_terms_and_conditions"
+                    android:title="Terms and Conditions"
+                    android:icon="@drawable/ic_terms_and_conditions"
+                    />
+                <item
+                    android:id="@+id/nav_about"
+                    android:title="About"
+                    android:icon="@drawable/ic_about"
+                    />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:title="Logout"
+                    android:icon="@drawable/ic_logout"
+                    />
+            </group>
+        </menu>
+    </item>
+
+
+</menu>

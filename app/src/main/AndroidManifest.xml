@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.teledentistry">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".TermsAndConditionActivity"></activity>
+        <activity android:name=".SettingActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".Doc_Main_Profile_Activity" />
+        <activity android:name=".Blogs_and_Articles_Activity" />
+        <activity android:name=".Doc_Account_Activity" />
+        <activity android:name=".AllAppointments_PatientsInfo_Activity" />
+        <activity android:name=".AllAppointmentsActivity" />
+        <activity android:name=".Calender_and_Schedule_Activity" />
+        <activity android:name=".PatientConsultedActivity" />
+        <activity android:name=".ConsultedPatientListActivity" />
+        <activity android:name=".PatientConsultationActivity" />
+        <activity android:name=".CurrentPatientsListActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".WebView_SplashActivity" />
+        <activity android:name=".DoctorHomeActivity" />
+        <activity android:name=".Doc_profile_activity3" />
+        <activity android:name=".Doc_profile_activity2" />
+        <activity android:name=".Doc_profile_activity1" />
+        <activity android:name=".PatientActivity" />
+        <activity android:name=".MainAppHomeActivity" />
+        <activity android:name=".IntroductoryActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
