@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+       <group>
+           <item
+               android:id="@+id/nav_home"
+               android:title="Home"
+               android:icon="@drawable/ic_home_pat_module"
+               />
+       </group>
+
+
+    <item android:title="Features">
+        <menu>
+            <group android:checkableBehavior="single">
+                 <item
+                    android:id="@+id/nav_consult_now"
+                    android:title="Consult Now"
+                     android:icon="@drawable/ic_consultnow_pat_module"
+                    />
+                <item
+                    android:id="@+id/nav_my_consultation"
+                    android:title="My Consultation"
+                    android:icon="@drawable/ic_myconsult_pat_module"
+                    />
+                <item
+                    android:id="@+id/nav_requested_consultation"
+                    android:title="Requested Consultation"
+                    android:icon="@drawable/ic_tcal_pat_module"
+                    />
+                <item
+                    android:id="@+id/nav_medical_history"
+                    android:title="Medical History"
+                    android:icon="@drawable/ic_mhistory_pat_module"
+                    />
+            </group>
+         </menu>
+    </item>
+
+    <item android:title="Profile">
+        <menu>
+            <group
+            android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_profile"
+                    android:title="Profile"
+                    android:icon="@drawable/ic_person_pat_module"
+                    />
+
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Other">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_setting"
+                    android:title="Setting"
+                    android:icon="@drawable/ic_settings_pat_module"
+                    />
+                <item
+                    android:id="@+id/nav_terms_and_conditions"
+                    android:title="Terms and Conditions"
+                    android:icon="@drawable/ic_terms_and_conditions_pat_module"
+                    />
+                <item
+                    android:id="@+id/nav_about"
+                    android:title="About"
+                    android:icon="@drawable/ic_about_pat_module"
+                    />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:title="Logout"
+                    android:icon="@drawable/ic_logout_pat_module"
+                    />
+            </group>
+        </menu>
+    </item>
+
+
+</menu>

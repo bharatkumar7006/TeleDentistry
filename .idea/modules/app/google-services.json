@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "237547451088",
+    "firebase_url": "https://tele-dentistry-default-rtdb.firebaseio.com",
+    "project_id": "tele-dentistry",
+    "storage_bucket": "tele-dentistry.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237547451088:android:21c79f25d9e40e1cef24d5",
+        "android_client_info": {
+          "package_name": "com.example.teledentistry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "237547451088-p72ahgog34lmfj85nuq6aucefmmhl812.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH4VukE8VOAkhh89dwTJPtA2-RAn69o3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237547451088-p72ahgog34lmfj85nuq6aucefmmhl812.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

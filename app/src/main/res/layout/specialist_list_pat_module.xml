@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/specialist_LL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    tools:ignore="MissingDefaultResource">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView11"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/round_border_doc_module"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.102"
+        app:srcCompat="@drawable/ic_person_doc_module"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/DocName_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="5dp"
+        android:text="Doctor Name"
+        android:textColor="#1E88E5"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toEndOf="@+id/imageView11"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.082" />
+
+    <TextView
+        android:id="@+id/experience_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="5dp"
+        android:text="Experience"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toEndOf="@+id/imageView11"
+        app:layout_constraintTop_toBottomOf="@+id/DocName_tv"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/status_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="Stauts"
+        android:textColor="#000000"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/experience_tv"
+        app:layout_constraintVertical_bias="0.005" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        app:civ_border_width="10dp"
+        app:civ_border_color="#05df29"
+        android:id="@+id/online_iv"
+        android:visibility="gone"
+        android:layout_marginTop="4dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toStartOf="@+id/status_tv"
+        app:layout_constraintTop_toBottomOf="@+id/experience_tv"
+    />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        app:civ_border_width="10dp"
+        app:civ_border_color="#bfbfbf"
+        android:id="@+id/offline_iv"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toStartOf="@+id/status_tv"
+        app:layout_constraintTop_toBottomOf="@+id/experience_tv"
+        />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="View Profile"
+        android:textSize="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toEndOf="@+id/DocName_tv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.082"
+        app:srcCompat="@drawable/ic_favb_pat_module" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/text_bg_pat_module"
+        android:drawableStart="@drawable/ic_card_pat_module"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:text="Fee"
+        android:textAlignment="textStart"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintStart_toEndOf="@+id/status_tv"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="0.061" >
+
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="99dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:paddingLeft="5dp"
+        android:text="Slot AVailable"
+        android:textColor="#1E88E5"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16"
+        app:layout_constraintVertical_bias="0.054" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="43dp"
+        android:layout_height="35dp"
+        android:background="@drawable/rounded_button_pat_module"
+        android:backgroundTint="#1E88E5"
+        android:text="M"
+        android:layout_marginEnd="4dp"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.029" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="44sp"
+        android:layout_height="35sp"
+        android:background="@drawable/rounded_button_pat_module"
+        android:backgroundTint="#1E88E5"
+        android:layout_marginEnd="4dp"
+        android:text="T"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="44sp"
+        android:layout_height="35sp"
+        android:background="@drawable/rounded_button_pat_module"
+        android:backgroundTint="#1E88E5"
+        android:text="W"
+        android:layout_marginEnd="4dp"
+
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="44sp"
+        android:layout_height="35sp"
+        android:background="@drawable/rounded_button_pat_module"
+        android:backgroundTint="#1E88E5"
+        android:text="TH"
+        android:layout_marginEnd="4dp"
+
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="44sp"
+        android:layout_height="35sp"
+        android:background="@drawable/rounded_button_pat_module"
+        android:backgroundTint="#1E88E5"
+        android:text="F"
+        android:layout_marginEnd="4dp"
+
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button7"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="44sp"
+        android:layout_height="35sp"
+        android:background="@drawable/rounded_button_pat_module"
+        android:backgroundTint="#1E88E5"
+        android:text="ST"
+        android:layout_marginEnd="4dp"
+
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button8"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="44sp"
+        android:layout_height="35sp"
+        android:background="@drawable/rounded_button_pat_module"
+        android:backgroundTint="#1E88E5"
+        android:text="S"
+        android:layout_marginEnd="8dp"
+
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="122dp"
+        android:layout_height="22dp"
+        android:drawableStart="@drawable/speci_pat_module"
+        android:paddingLeft="5dp"
+        android:text="Specialities"
+        android:textColor="#1C115C"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button5"
+        app:layout_constraintVertical_bias="0.152" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="OthoDintist"
+        android:layout_marginStart="18dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <Button
+        android:id="@+id/consultMe_btn"
+        android:layout_width="170dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_button_pat_module"
+        android:backgroundTint="#1E88E5"
+        android:text="Consult Me"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19"
+        app:layout_constraintVertical_bias="1.0" />
+
+     <Button
+        android:id="@+id/bookAppointment_btn"
+        android:layout_width="165dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_button_pat_module"
+        android:backgroundTint="#1E88E5"
+        android:paddingLeft="5dp"
+        android:text="Book Appointment"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintStart_toEndOf="@+id/consultMe_btn"
+        app:layout_constraintTop_toBottomOf="@+id/textView19"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView67"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="1000"
+        android:textSize="15dp"
+        android:layout_marginStart="39dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView16"
+        app:layout_constraintStart_toStartOf="@+id/textView16"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

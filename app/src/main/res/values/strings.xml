@@ -16,6 +16,96 @@
         <item>Female</item>
     </string-array>
 
+    <string-array name="spinner_Feet">
+        <item>Feet</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string-array name="spinner_Inches">
+        <item>Inches</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+
+    </string-array>
+    <string-array name="spinner_BloodGroup">
+        <item>select</item>
+        <item>A</item>
+        <item>B</item>
+        <item>A+</item>
+        <item>B+</item>
+        <item>O+</item>
+        <item>O-</item>
+    </string-array>
+    <string-array name="weight">
+        <item>select</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+    <string-array name="speciality">
+        <item>Select Speciality</item>
+        <item>Orthodontist</item>
+        <item>Endodontist</item>
+        <item>Dentist</item>
+        <item>Periodontist</item>
+        <item>Oral surgeon</item>
+        <item>Oral Pathologist</item>
+        <item>Pediatric Dentist</item>
+
+
+    </string-array>
+    <string-array name="Relation">
+        <item>Relation</item>
+        <item>Aunt</item>
+        <item>Brother</item>
+        <item>Daughter</item>
+        <item>Father</item>
+        <item>GrandFather</item>
+        <item>GrandMother</item>
+        <item>Mother</item>
+        <item>Self</item>
+        <item>Sister</item>
+        <item>Son</item>
+        <item>Surrogate</item>
+        <item>Uncle</item>
+
+
+    </string-array>
+
     <string-array name="spinner_maritalstatus_item">
         <item>Marital Status</item>
         <item>Single</item>

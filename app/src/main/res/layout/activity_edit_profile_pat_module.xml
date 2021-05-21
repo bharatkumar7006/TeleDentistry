@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="PatientModule.EditProfileActivity">
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="271dp"
+        android:layout_height="46dp"
+        android:text="Let's Edit your basic profile"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="15dp"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.439"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_photo_pat_module"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.079"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/fullname"
+        android:layout_width="300dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edittext_bg_doc_module"
+        android:drawableStart="@drawable/ic_name_doc_module"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:hint="Name*"
+        android:paddingLeft="8dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        app:layout_constraintVertical_bias="0.14"
+        app:layout_constraintWidth_percent=".8" />
+
+    <TextView
+        android:id="@+id/dob"
+        android:layout_width="300dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edittext_bg_doc_module"
+        android:drawableStart="@drawable/ic_calender_doc_module"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:hint="Date Of Birth*"
+        android:paddingLeft="8dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullname"
+        app:layout_constraintVertical_bias="0.065"
+        app:layout_constraintWidth_percent=".8" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="137dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="32dp"
+        android:autofillHints="Select"
+        android:background="@drawable/edittext_bg_doc_module"
+        android:entries="@array/spinner_gender_item"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/spinner2"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dob"
+        app:layout_constraintVertical_bias="0.065"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="137dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edittext_bg_doc_module"
+        android:entries="@array/spinner_maritalstatus_item"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.863"
+        app:layout_constraintStart_toEndOf="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@+id/dob"
+        app:layout_constraintVertical_bias="0.065"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="137dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="32dp"
+        android:background="@drawable/edittext_bg_doc_module"
+        android:entries="@array/spinner_Feet"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/spinner4"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintVertical_bias="0.065" />
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="137dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edittext_bg_doc_module"
+        android:entries="@array/spinner_Inches"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.836"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintStart_toEndOf="@id/spinner3"
+        app:layout_constraintTop_toBottomOf="@+id/spinner2"
+        app:layout_constraintVertical_bias="0.065"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spinner5"
+        android:layout_width="137dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="32dp"
+        android:background="@drawable/edittext_bg_doc_module"
+        android:entries="@array/spinner_BloodGroup"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/spinner6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner3"
+        app:layout_constraintVertical_bias="0.083"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spinner6"
+        android:layout_width="137dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edittext_bg_doc_module"
+        android:entries="@array/weight"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.853"
+        app:layout_constraintStart_toEndOf="@id/spinner5"
+        app:layout_constraintTop_toBottomOf="@+id/spinner4"
+        app:layout_constraintVertical_bias="0.083"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/edit_btn"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button_bg_doc_module"
+        android:text="edit"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner5"
+        app:layout_constraintVertical_bias="0.645"
+        app:layout_constraintWidth_percent=".8" />
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="Gender*"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.994" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="Martial Status*"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toTopOf="@+id/spinner2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.725"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dob"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="Height*"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="244dp"
+        android:text="Blood Group*"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.475" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="244dp"
+        android:text="Weight*"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.726"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.475" />
+
+
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="100dp"
+        android:layout_height="10dp"
+        android:text="*"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toTopOf="@+id/spinner4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.726"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner2"
+        app:layout_constraintVertical_bias="0.125" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

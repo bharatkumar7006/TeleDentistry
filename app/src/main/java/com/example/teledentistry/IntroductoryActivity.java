@@ -1,11 +1,14 @@
 package com.example.teledentistry;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +19,10 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.teledentistry.DoctorModule.Fragments.OnBoardingFragment1;
+import com.example.teledentistry.DoctorModule.Fragments.OnBoardingFragment2;
+import com.example.teledentistry.DoctorModule.Fragments.OnBoardingFragment3;
+import com.example.teledentistry.R;
 
 public class IntroductoryActivity extends AppCompatActivity {
 ImageView logo,background;
@@ -26,11 +33,13 @@ private ViewPager viewPager;
 private ScreenSlidePagerAdapter pagerAdapter;
 Animation anim;
 Window window;
+Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introductory);
+        spinner = findViewById(R.id.spinner);
 
         background=(ImageView)findViewById(R.id.image1);
         logo=(ImageView)findViewById(R.id.image2);
@@ -87,4 +96,6 @@ Window window;
         }
 
     }
+
+
 }
