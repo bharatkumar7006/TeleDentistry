@@ -1,53 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/allAppointment_LL"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeightLarge"
-    android:orientation="horizontal"
+    android:layout_height="100dp"
     android:layout_marginTop="10dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
     tools:ignore="MissingDefaultResource">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/allAppointmentsPatient_date_tv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Date"
         android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:textSize="16sp"
         android:textAlignment="center"
-        android:layout_marginTop="30dp"
-        />
+        android:layout_marginTop="15dp"
+        tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/allAppointmentsPatient_Name_tv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="Patient Name"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:textAlignment="center"
-        android:layout_marginTop="30dp"
-        />
+            <TextView
+                android:id="@+id/allAppointmentsPatient_Name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient Name"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toStartOf="@+id/allAppointmentsPatient_time_tv"
+                app:layout_constraintStart_toEndOf="@+id/allAppointmentsPatient_date_tv"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="0dp" />
 
-    <TextView
-        android:id="@+id/allAppointmentsPatient_time_tv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="Time"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:textAlignment="center"
-        android:layout_marginTop="30dp"
-        />
+            <TextView
+                android:id="@+id/allAppointmentsPatient_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Time"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints" />
 
+            <TextView
+                android:id="@+id/date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Data"
+                android:textAlignment="center"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/allAppointmentsPatient_date_tv" />
 
+            <TextView
+                android:id="@+id/name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textAlignment="center"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toStartOf="@+id/divider2"
+                app:layout_constraintStart_toEndOf="@+id/divider"
+                app:layout_constraintTop_toBottomOf="@+id/allAppointmentsPatient_Name_tv" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Time"
+                android:textAlignment="center"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.505"
+                app:layout_constraintStart_toEndOf="@+id/divider2"
+                app:layout_constraintTop_toBottomOf="@+id/allAppointmentsPatient_time_tv" />
+
+            <TextView
+                android:id="@+id/time_tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Time"
+                android:textAlignment="center"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.505"
+                app:layout_constraintStart_toEndOf="@+id/divider2"
+                app:layout_constraintTop_toBottomOf="@+id/allAppointmentsPatient_time_tv" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toStartOf="@+id/allAppointmentsPatient_Name_tv"
+                app:layout_constraintHorizontal_bias="0.726"
+                app:layout_constraintStart_toEndOf="@+id/allAppointmentsPatient_date_tv"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toStartOf="@+id/allAppointmentsPatient_time_tv"
+                app:layout_constraintHorizontal_bias="0.212"
+                app:layout_constraintStart_toEndOf="@+id/allAppointmentsPatient_Name_tv"
+                tools:layout_editor_absoluteY="0dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

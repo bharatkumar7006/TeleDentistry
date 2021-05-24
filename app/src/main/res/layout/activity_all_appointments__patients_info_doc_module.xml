@@ -15,6 +15,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_border3_doc_module"
         android:text="Patient Info"
+        android:textColor="#1E88E5"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -22,12 +23,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/pat_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="44dp"
-        android:background="@drawable/round_border2_doc_module"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,11 +35,11 @@
         app:srcCompat="@drawable/ic_person_doc_module" />
 
     <TextView
-        android:id="@+id/textView38"
+        android:id="@+id/pat_name_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_border3_doc_module"
         android:paddingLeft="10dp"
@@ -49,14 +49,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+        app:layout_constraintTop_toBottomOf="@+id/pat_img" />
 
     <TextView
-        android:id="@+id/textView39"
+        android:id="@+id/pat_email_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_border3_doc_module"
         android:paddingLeft="10dp"
@@ -65,27 +65,27 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+        app:layout_constraintTop_toBottomOf="@+id/pat_name_tv" />
 
     <TextView
-        android:id="@+id/textView40"
+        android:id="@+id/pat_age_tv"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/round_border3_doc_module"
         android:paddingLeft="10dp"
         android:text="Age"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView39" />
+        app:layout_constraintTop_toBottomOf="@+id/pat_email_tv" />
 
     <TextView
-        android:id="@+id/textView41"
+        android:id="@+id/pat_gender_tv"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_border3_doc_module"
         android:paddingLeft="10dp"
@@ -93,14 +93,14 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView39" />
+        app:layout_constraintTop_toBottomOf="@+id/pat_email_tv" />
 
     <TextView
-        android:id="@+id/textView42"
+        android:id="@+id/pat_disease_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_border3_doc_module"
         android:paddingLeft="10dp"
@@ -109,14 +109,14 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+        app:layout_constraintTop_toBottomOf="@+id/pat_age_tv" />
 
     <TextView
-        android:id="@+id/textView43"
+        android:id="@+id/pat_address_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_border3_doc_module"
         android:paddingLeft="10dp"
@@ -125,27 +125,27 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+        app:layout_constraintTop_toBottomOf="@+id/pat_disease_tv" />
 
     <TextView
-        android:id="@+id/textView44"
+        android:id="@+id/pat_country_tv"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/round_border3_doc_module"
         android:paddingLeft="10dp"
         android:text="Country"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView43" />
+        app:layout_constraintTop_toBottomOf="@+id/pat_address_tv" />
 
     <TextView
-        android:id="@+id/textView45"
+        android:id="@+id/pat_state_tv"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_border3_doc_module"
         android:paddingLeft="10dp"
@@ -153,5 +153,92 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView43" />
+        app:layout_constraintTop_toBottomOf="@+id/pat_address_tv" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="5dp"
+        android:text="Name"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toTopOf="@+id/pat_name_tv"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="2dp"
+        android:text="Email"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toTopOf="@+id/pat_email_tv"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="2dp"
+        android:text="Age"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toTopOf="@+id/pat_age_tv"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView66"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Disease"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toTopOf="@+id/pat_disease_tv"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView68"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="2dp"
+        android:text="Address"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toTopOf="@+id/pat_address_tv"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView70"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="2dp"
+        android:text="Country"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toTopOf="@+id/pat_country_tv"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="2dp"
+        android:text="Gender"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toTopOf="@+id/pat_gender_tv"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView72"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="2dp"
+        android:text="State"
+        android:textColor="#1E88E5"
+        app:layout_constraintBottom_toTopOf="@+id/pat_state_tv"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

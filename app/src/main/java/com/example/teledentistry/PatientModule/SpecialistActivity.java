@@ -60,7 +60,7 @@ public class SpecialistActivity extends AppCompatActivity implements NavigationV
         setContentView(R.layout.activity_specialist_pat_module);
 
         recyclerView =(RecyclerView) findViewById(R.id.recycleView);
-        manager= new LinearLayoutManager(this);
+        manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
 

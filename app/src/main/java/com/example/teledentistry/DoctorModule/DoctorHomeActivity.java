@@ -338,7 +338,6 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
                 break;
             }
             case R.id.nav_logout: {
-                finish();
                 openDialog();
                 break;
             }

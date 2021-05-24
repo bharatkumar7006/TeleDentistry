@@ -15,14 +15,9 @@ import com.example.teledentistry.R;
 
 public class CurrentPatientDataList_Adapter extends RecyclerView.Adapter<CurrentPatientDataList_Adapter.ViewHolder>{
     Context context;
-    String date[], name[] ,time[];
 
-    public CurrentPatientDataList_Adapter(Context context, String d[], String n[], String t[]) {
+    public CurrentPatientDataList_Adapter(Context context) {
         this.context = context;
-        this.date = d;
-        this.name = n;
-        this.time = t;
-
     }
 
 
@@ -37,15 +32,12 @@ public class CurrentPatientDataList_Adapter extends RecyclerView.Adapter<Current
 
     @Override
     public void onBindViewHolder(@NonNull CurrentPatientDataList_Adapter.ViewHolder holder, int position) {
-        holder.current_patient_date_tv.setText(date[position]);
-        holder.current_patient_name_tv.setText(name[position]);
-        holder.current_patient_time_tv.setText(time[position]);
 
     }
 
     @Override
     public int getItemCount() {
-        return date.length;
+        return 1;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

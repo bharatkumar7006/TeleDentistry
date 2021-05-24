@@ -50,12 +50,9 @@ public class CurrentPatientsListActivity extends AppCompatActivity implements Na
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
 
-        date = getResources().getStringArray(R.array.date);
-        name = getResources().getStringArray(R.array.name);
-        time = getResources().getStringArray(R.array.time);
 
         CurrentPatientDataList_Adapter currentPatientDataList_adapter = new CurrentPatientDataList_Adapter(
-                this, date,name,time);
+                this);
 
         currentPatient_recyclerView.setHasFixedSize(true);
         currentPatient_recyclerView.setLayoutManager(new LinearLayoutManager(this));

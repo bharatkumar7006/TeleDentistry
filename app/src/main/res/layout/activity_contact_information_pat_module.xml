@@ -97,7 +97,7 @@
         tools:ignore="MissingConstraints" />
 
     <Spinner
-        android:id="@+id/state"
+        android:id="@+id/state_spineer"
         android:layout_width="137dp"
         android:layout_height="35dp"
         android:layout_marginEnd="32dp"
@@ -218,7 +218,7 @@
         android:fontFamily="sans-serif-condensed-medium"
         android:text="State*"
         android:textColor="#1E88E5"
-        app:layout_constraintBottom_toTopOf="@+id/state"
+        app:layout_constraintBottom_toTopOf="@+id/state_spineer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.704"
         app:layout_constraintStart_toStartOf="parent"

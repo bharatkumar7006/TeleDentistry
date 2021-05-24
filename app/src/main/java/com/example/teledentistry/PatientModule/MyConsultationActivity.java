@@ -119,6 +119,11 @@ public class MyConsultationActivity extends AppCompatActivity implements Navigat
         OpenLogoutClass openLogoutClass=new OpenLogoutClass();
         openLogoutClass.show(getSupportFragmentManager(),"open_logout_class");
 
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

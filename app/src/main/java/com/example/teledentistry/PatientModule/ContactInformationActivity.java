@@ -34,18 +34,19 @@ import java.util.Locale;
 
 public class ContactInformationActivity extends AppCompatActivity {
     Locale[] locales = Locale.getAvailableLocales();
-    Spinner country_spinner;
+    Spinner country_spinner,state_spinner;
     EditText address, city, phone_no,emergency_no;
     FirebaseAuth firebaseAuth;
     DatabaseReference reference;
     Button next;
-    String txt_country,txt_address,txt_city,txt_phone_no,txt_emergency_no;
+    String txt_country,txt_state ,txt_address,txt_city,txt_phone_no,txt_emergency_no;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_information_pat_module);
         country_spinner=findViewById(R.id.country);
+        state_spinner = findViewById(R.id.state_spineer);
         address = findViewById(R.id.address);
         city = findViewById(R.id.city);
         phone_no = findViewById(R.id.Phonenum);
@@ -54,6 +55,10 @@ public class ContactInformationActivity extends AppCompatActivity {
 
         ArrayAdapter countryArrayAdapter = ArrayAdapter.createFromResource(this,R.array.spinner_country_list,R.layout.color_country_spinner_layout_doc_module);
         country_spinner.setAdapter(countryArrayAdapter);
+
+        ArrayAdapter stateArrayAdapter = ArrayAdapter.createFromResource(this,R.array.spinner_state_list,R.layout.color_country_spinner_layout_doc_module);
+        state_spinner.setAdapter(stateArrayAdapter);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -90,11 +95,12 @@ public class ContactInformationActivity extends AppCompatActivity {
         txt_address = address.getText().toString();
         txt_city = city.getText().toString();
         txt_country = country_spinner.getSelectedItem().toString();
+        txt_state = state_spinner.getSelectedItem().toString();
         txt_phone_no = phone_no.getText().toString();
         txt_emergency_no = emergency_no.getText().toString();
 
         if (TextUtils.isEmpty(txt_address) || TextUtils.isEmpty(txt_city) || TextUtils.isEmpty(txt_country) ||
-                TextUtils.isEmpty(txt_phone_no) || TextUtils.isEmpty(txt_emergency_no)) {
+                TextUtils.isEmpty(txt_phone_no) || TextUtils.isEmpty(txt_emergency_no) ||TextUtils.isEmpty(txt_state)) {
             Toast.makeText(ContactInformationActivity.this, "All field are required", Toast.LENGTH_SHORT).show();
         } else {
 
@@ -114,6 +120,7 @@ public class ContactInformationActivity extends AppCompatActivity {
                         postHashMap.put("address", txt_address);
                         postHashMap.put("city", txt_city);
                         postHashMap.put("country", txt_country);
+                        postHashMap.put("state",txt_state);
                         postHashMap.put("phone_no", txt_phone_no);
                         postHashMap.put("emergency_no", txt_emergency_no);
 

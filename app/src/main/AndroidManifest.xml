@@ -13,7 +13,9 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/applogo1"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".TeleDentistry"
+        >
         <activity android:name=".DoctorModule.TermsAndConditionActivity"></activity>
         <activity android:name=".DoctorModule.SettingActivity" />
         <activity android:name=".DoctorModule.AboutActivity_Doc" />

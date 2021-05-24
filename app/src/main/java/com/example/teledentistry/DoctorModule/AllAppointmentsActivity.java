@@ -9,24 +9,57 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
 
 import com.example.teledentistry.DoctorModule.Adapters.AllAppointments_Adapter;
 import com.example.teledentistry.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AllAppointmentsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    String date[], name[], time[] ;
+
     Window window;
     RecyclerView recyclerView;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+
+    DatabaseReference reference  = FirebaseDatabase.getInstance().getReference("Doctors");
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
+    String userId;
+
+    String pat_id;
+    List<Object> datalist;
+    String data_of_list;
+    String dataArray[];
+    int count = 0;
+
+    List<String> adapterList;
+
+    AllAppointments_Adapter allAppointments_adapter;
+    private LinearLayoutManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,33 +70,63 @@ public class AllAppointmentsActivity extends AppCompatActivity implements Naviga
         navigationView = findViewById(R.id.navigation);
         toolbar = findViewById(R.id.toolbar);
 
-        if(Build.VERSION.SDK_INT>=21){
+        //   reference.keepSynced(true);
+
+        if (Build.VERSION.SDK_INT >= 21) {
             window = this.getWindow();
             window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
         }
-        date = getResources().getStringArray(R.array.date);
-        name = getResources().getStringArray(R.array.name);
-        time = getResources().getStringArray(R.array.time);
 
-        AllAppointments_Adapter allAppointments_adapter = new AllAppointments_Adapter(getApplicationContext(),date, name, time);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(allAppointments_adapter);
+//        adapterList = new ArrayList<>();
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        recyclerView.addItemDecoration(dividerItemDecoration);
-
+        final Context context;
+        context = getApplicationContext();
 
         // ActionBar and Navigation
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        userId = user.getUid();
+
+        final FirebaseRecyclerOptions<BookedSlots_Model> options =
+                new FirebaseRecyclerOptions.Builder<BookedSlots_Model>()
+                        .setQuery(FirebaseDatabase.getInstance()
+                                .getReference("Doctors").child(userId).child("booked slots"), BookedSlots_Model.class)
+                        .build();
+
+        allAppointments_adapter = new AllAppointments_Adapter(context,options);
+        manager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setAdapter(allAppointments_adapter);
+        allAppointments_adapter.notifyDataSetChanged();
+        allAppointments_adapter.startListening();
+
+//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(AllAppointmentsActivity.this, DividerItemDecoration.VERTICAL);
+//        recyclerView.addItemDecoration(dividerItemDecoration);
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        allAppointments_adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(allAppointments_adapter != null) {
+            allAppointments_adapter.stopListening();
+        }
+    }
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -95,7 +158,7 @@ public class AllAppointmentsActivity extends AppCompatActivity implements Naviga
                 startActivity(i);
                 break;
             }
-            case R.id.nav_profile:{
+            case R.id.nav_profile: {
                 Intent i = new Intent(AllAppointmentsActivity.this, Doc_Main_Profile_Activity.class);
                 startActivity(i);
                 break;
@@ -120,4 +183,6 @@ public class AllAppointmentsActivity extends AppCompatActivity implements Naviga
         }
         return true;
     }
+
+
 }
