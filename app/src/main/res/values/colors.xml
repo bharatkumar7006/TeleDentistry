@@ -6,6 +6,8 @@
     <color name="white">#ffffff</color>
     <color name="blue">#88bef5</color>
     <color name="black">#000000</color>
+    <color name="reddark">#FF8F1311</color>
+    <color name="red">#EF5350</color>
 
     <color name="address">#2F7092</color>
     <color name="followers">#0D5D98</color>

@@ -107,8 +107,8 @@ public class AllAppointmentsActivity extends AppCompatActivity implements Naviga
         allAppointments_adapter.notifyDataSetChanged();
         allAppointments_adapter.startListening();
 
-//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(AllAppointmentsActivity.this, DividerItemDecoration.VERTICAL);
-//        recyclerView.addItemDecoration(dividerItemDecoration);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(AllAppointmentsActivity.this, DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
     }
 

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -54,13 +55,20 @@ public class AppointmentActivity extends AppCompatActivity implements OnRadioBut
 
         view = getLayoutInflater().inflate(R.layout.time_slots_doc_module, null, false);
 
-        CalendarConstraints.Builder constraintsBuilder = new CalendarConstraints.Builder();
 
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         calendar.clear();
         long today = MaterialDatePicker.todayInUtcMilliseconds();
         calendar.setTimeInMillis(today);
         calendar.set(Calendar.MONTH, Calendar.JANUARY);
+        long january = calendar.getTimeInMillis();
+        calendar.set(Calendar.MONTH, Calendar.DECEMBER);
+        long december = calendar.getTimeInMillis();
+
+        CalendarConstraints.Builder constraintsBuilder = new CalendarConstraints.Builder();
+        constraintsBuilder.setStart(january);
+        constraintsBuilder.setEnd(december);
+        constraintsBuilder.setValidator(DateValidatorPointForward.now());
 
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
         builder.setTitleText("Select a Date");
@@ -145,17 +153,22 @@ public class AppointmentActivity extends AppCompatActivity implements OnRadioBut
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(allSlotsOfGivenDate!=null){
+                if (appointment_slot_recyclerView_adapter.getItemCount()!= 0 ) {
+                if (allSlotsOfGivenDate != null) {
                     bookSlot = allSlotsOfGivenDate.get(position);
                 }
                 Intent intent = new Intent(AppointmentActivity.this, ConfirmationAppoitnmentActivity.class);
-                intent.putExtra("bookedSlot",bookSlot);
-                intent.putExtra("date",date);
-                intent.putExtra("fee",fee);
-                intent.putExtra("numb",numb);
-
+                intent.putExtra("bookedSlot", bookSlot);
+                intent.putExtra("date", date);
+                intent.putExtra("fee", fee);
+                intent.putExtra("numb", numb);
+                Log.d("dateee", date);
                 startActivity(intent);
-
+            }
+            else{
+                    Toast.makeText(AppointmentActivity.this, "Please select time slot for booking the appointment",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

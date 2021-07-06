@@ -8,16 +8,26 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.teledentistry.DoctorModule.BookedSlots_Model;
 import com.example.teledentistry.DoctorModule.PatientConsultationActivity;
 import com.example.teledentistry.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class CurrentPatientDataList_Adapter extends RecyclerView.Adapter<CurrentPatientDataList_Adapter.ViewHolder>{
-    Context context;
+import de.hdodenhof.circleimageview.CircleImageView;
 
-    public CurrentPatientDataList_Adapter(Context context) {
+public class CurrentPatientDataList_Adapter extends FirebaseRecyclerAdapter<BookedSlots_Model,CurrentPatientDataList_Adapter.ViewHolder> {
+    FirebaseRecyclerOptions<BookedSlots_Model> options;
+    static Context context;
+
+    public CurrentPatientDataList_Adapter(Context context ,FirebaseRecyclerOptions<BookedSlots_Model> options) {
+        super(options);
         this.context = context;
+        this.options = options;
     }
 
 
@@ -30,37 +40,55 @@ public class CurrentPatientDataList_Adapter extends RecyclerView.Adapter<Current
         return viewHolder;
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull CurrentPatientDataList_Adapter.ViewHolder holder, int position) {
+    protected void onBindViewHolder(@NonNull final ViewHolder holder, int position, @NonNull final BookedSlots_Model model) {
+
+        String time = model.getTime();
+        String time_split[] = time.split("-");
+        String time1 = time_split[0];
+        String time2 = time_split[1];
+
+        holder.date_tv.setText(model.getDate());
+        holder.name_tv.setText(model.getFull_name());
+        holder.time_tv.setText(time1+" to");
+        holder.time_tv2.setText(time2);
+        Glide.with(CurrentPatientDataList_Adapter.context).load(model.getImageUrl()).into(holder.pat_img);
+
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), PatientConsultationActivity.class);
+                i.putExtra("pat_name",holder.name_tv.getText().toString());
+                i.putExtra("imageUrl",model.getImageUrl());
+                i.putExtra("pat_id",model.getPat_id());
+                i.putExtra("date", model.getDate());
+                i.putExtra("time", model.getTime());
+
+                v.getContext().startActivity(i);
+            }
+        });
 
     }
 
-    @Override
-    public int getItemCount() {
-        return 1;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView current_patient_date_tv,current_patient_name_tv,current_patient_time_tv;
-
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        public TextView date_tv, name_tv, time_tv,time_tv2;
+        CardView cardView;
+        CircleImageView pat_img;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            this.current_patient_date_tv = itemView.findViewById(R.id.currentPatient_date_tv);
-            this.current_patient_name_tv = itemView.findViewById(R.id.current_patientName_tv);
-            this.current_patient_time_tv = itemView.findViewById(R.id.currentPatient_time_tv);
-            itemView.setOnClickListener(this);
+            date_tv = itemView.findViewById(R.id.date_tv);
+            name_tv = itemView.findViewById(R.id.name_tv);
+            time_tv = itemView.findViewById(R.id.time_tv);
+            time_tv2 = itemView.findViewById(R.id.time_tv2);
+            pat_img = (CircleImageView) itemView.findViewById(R.id.pat_img);
+            cardView = (CardView) itemView.findViewById(R.id.cardView);
 
         }
 
-
-        @Override
-        public void onClick(View v) {
-            Intent i = new Intent(v.getContext(), PatientConsultationActivity.class);
-            context.startActivity(i);
-
-        }
     }
 
 

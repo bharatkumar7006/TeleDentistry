@@ -263,7 +263,7 @@
                     android:textAlignment="center"
                     android:gravity="center_horizontal"
                     android:textStyle="bold"
-                    android:text="All Appointments of Week" />
+                    android:text="All Appointments" />
 
                 <ImageView
                     android:id="@+id/appoitments_Iv"

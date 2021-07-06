@@ -50,7 +50,7 @@
         android:layout_weight="1"
         android:paddingLeft="5dp"
         android:text="Experience"
-        android:textSize="10dp"
+        android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.075"
@@ -113,17 +113,19 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView11"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/fav_btn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toEndOf="@+id/DocName_tv"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.082"
-        app:srcCompat="@drawable/ic_favb_pat_module" />
+        app:backgroundTint="#EF5350"
+        android:background="@drawable/ic_favorite_24"
+        />
 
     <TextView
         android:id="@+id/textView16"
@@ -141,7 +143,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toEndOf="@+id/status_tv"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/fav_btn"
         app:layout_constraintVertical_bias="0.061" >
 
 
@@ -168,7 +170,7 @@
         android:layout_width="43dp"
         android:layout_height="35dp"
         android:background="@drawable/rounded_button_pat_module"
-        android:backgroundTint="#1E88E5"
+        app:backgroundTint="#1E88E5"
         android:text="M"
         android:layout_marginEnd="4dp"
         android:textAlignment="center"
@@ -183,7 +185,7 @@
         android:layout_width="44sp"
         android:layout_height="35sp"
         android:background="@drawable/rounded_button_pat_module"
-        android:backgroundTint="#1E88E5"
+        app:backgroundTint="#1E88E5"
         android:layout_marginEnd="4dp"
         android:text="T"
         android:textColor="#ffffff"
@@ -197,10 +199,9 @@
         android:layout_width="44sp"
         android:layout_height="35sp"
         android:background="@drawable/rounded_button_pat_module"
-        android:backgroundTint="#1E88E5"
+        app:backgroundTint="#1E88E5"
         android:text="W"
         android:layout_marginEnd="4dp"
-
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button5"
@@ -212,10 +213,9 @@
         android:layout_width="44sp"
         android:layout_height="35sp"
         android:background="@drawable/rounded_button_pat_module"
-        android:backgroundTint="#1E88E5"
+        app:backgroundTint="#1E88E5"
         android:text="TH"
         android:layout_marginEnd="4dp"
-
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button6"
@@ -227,10 +227,9 @@
         android:layout_width="44sp"
         android:layout_height="35sp"
         android:background="@drawable/rounded_button_pat_module"
-        android:backgroundTint="#1E88E5"
+        app:backgroundTint="#1E88E5"
         android:text="F"
         android:layout_marginEnd="4dp"
-
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button7"
@@ -242,10 +241,9 @@
         android:layout_width="44sp"
         android:layout_height="35sp"
         android:background="@drawable/rounded_button_pat_module"
-        android:backgroundTint="#1E88E5"
+        app:backgroundTint="#1E88E5"
         android:text="ST"
         android:layout_marginEnd="4dp"
-
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button8"
@@ -257,10 +255,9 @@
         android:layout_width="44sp"
         android:layout_height="35sp"
         android:background="@drawable/rounded_button_pat_module"
-        android:backgroundTint="#1E88E5"
+        app:backgroundTint="#1E88E5"
         android:text="S"
         android:layout_marginEnd="8dp"
-
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -304,7 +301,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/rounded_button_pat_module"
-        android:backgroundTint="#1E88E5"
+        app:backgroundTint="#1E88E5"
         android:text="Consult Me"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -320,7 +317,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/rounded_button_pat_module"
-        android:backgroundTint="#1E88E5"
+        app:backgroundTint="#1E88E5"
         android:paddingLeft="5dp"
         android:text="Book Appointment"
         android:textColor="#ffffff"

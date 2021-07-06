@@ -19,3 +19,11 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# Twilio Programmable Voice
+-keep class tvi.webrtc.** { *; }
+-keep class com.twilio.video.** { *; }
+-keepattributes InnerClasses
+# Jisti Meet SDK
+
+-keep class org.jitsi.meet.** { *; }
+-keep class org.jitsi.meet.sdk.** { *; }

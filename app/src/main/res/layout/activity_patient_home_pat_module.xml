@@ -103,13 +103,13 @@
                     android:textColor="#1E88E5"
                     android:textSize="15dp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView12"
+                    app:layout_constraintEnd_toStartOf="@+id/notification_icon"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/profile_imageView"
                     app:layout_constraintTop_toTopOf="@+id/constraintLayout5" />
 
                 <ImageView
-                    android:id="@+id/imageView12"
+                    android:id="@+id/notification_icon"
                     android:layout_width="38dp"
                     android:layout_height="38dp"
                     android:layout_marginTop="16dp"
@@ -131,7 +131,7 @@
                     android:textColor="#1E88E5"
                     android:textSize="12dp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView12"
+                    app:layout_constraintEnd_toStartOf="@+id/notification_icon"
                     app:layout_constraintStart_toEndOf="@+id/profile_imageView"
                     app:layout_constraintTop_toBottomOf="@+id/patientName_tv" />
 

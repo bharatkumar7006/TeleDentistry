@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     android:background="#ffff"
-        >
+    android:padding="10dp">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/docFullNameEditText"
@@ -14,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -60,26 +59,24 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/doc_SignUpEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_below="@id/docSignUpPhoneEditText"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
-
-    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:drawableStart="@drawable/ic_email_doc_module"
-        android:drawablePadding="16dp"
-        android:ems="10"
-        android:hint="Email*"
-        android:inputType="textEmailAddress"
-        android:textColorHint="#4E4C4C"
- />
+        android:layout_below="@id/docSignUpPhoneEditText"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_email_doc_module"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:hint="Email*"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#4E4C4C"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -109,38 +106,38 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/doc_SignUpPractitionerLicense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_below="@id/docSignUpPassword"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
-    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:drawableStart="@drawable/ic_license_doc_module"
-        android:drawablePadding="16dp"
-        android:ems="10"
-        android:hint="Practitioner License*"
-        android:inputType="textPersonName"
-        android:textColorHint="#4E4C4C"
- />
+        android:layout_below="@id/docSignUpPassword"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_license_doc_module"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:hint="Practitioner License*"
+            android:inputType="textPersonName"
+            android:textColorHint="#4E4C4C"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button
-            android:id="@+id/doc_signup_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/button_style_doc_module"
-            android:text="Sign up"
-            android:layout_below="@id/doc_SignUpPractitionerLicense"
-        />
+        android:id="@+id/doc_signup_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/doc_SignUpPractitionerLicense"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:backgroundTint="#1E88E5"
+        android:background="@drawable/button_style_doc_module"
+        android:text="Sign up"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>

@@ -49,6 +49,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_bg_doc_module"
         android:text="Login"
+        app:backgroundTint="#1E88E5"
         android:textColor="@color/white"
         android:fontFamily="sans-serif-condensed-medium"
         android:textSize="16sp"

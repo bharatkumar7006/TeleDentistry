@@ -75,6 +75,7 @@
         android:layout_below="@id/forgotPass_tv"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        app:backgroundTint="#1E88E5"
         android:background="@drawable/button_style_doc_module"
         android:text="Login As a Doctor"
         android:textColor="#ffff"

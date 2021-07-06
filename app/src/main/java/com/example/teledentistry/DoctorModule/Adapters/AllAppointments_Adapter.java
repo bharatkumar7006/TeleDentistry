@@ -12,8 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.teledentistry.DoctorModule.AllAppointments_PatientsInfo_Activity;
 import com.example.teledentistry.DoctorModule.BookedSlots_Model;
+import com.example.teledentistry.PatientModule.Adapters.Specialist_Adapter;
 import com.example.teledentistry.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -24,8 +26,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AllAppointments_Adapter extends FirebaseRecyclerAdapter<BookedSlots_Model,AllAppointments_Adapter.ViewHolder> {
-    Context context;
+   static Context context;
     List<String> list;
     String pat_id;
     String pat_name;
@@ -59,10 +63,6 @@ public class AllAppointments_Adapter extends FirebaseRecyclerAdapter<BookedSlots
         return viewHolder;
     }
 
-//    @Override
-//    public void onBindViewHolder(@NonNull AllAppointments_Adapter.ViewHolder holder, final int position) {
-//
-//    }
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull final BookedSlots_Model model) {
@@ -79,6 +79,8 @@ public class AllAppointments_Adapter extends FirebaseRecyclerAdapter<BookedSlots
         holder.name_tv.setText(model.getFull_name());
         holder.time_tv.setText(time1+" to");
         holder.time_tv2.setText(time2);
+        Glide.with(AllAppointments_Adapter.context).load(model.getImageUrl()).into(holder.pat_img);
+
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,101 +91,12 @@ public class AllAppointments_Adapter extends FirebaseRecyclerAdapter<BookedSlots
             }
         });
 
-
-//        reference.child(userId)
-//                .child("booked slots")
-//                .addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        String date = " ";
-//                        String time = " ";
-//
-//                        List<HashMap> hashMapList;
-//                        HashMap<String, Object> hashMap;
-//
-//                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-//
-//                            hashMap = (HashMap<String, Object>) dataSnapshot.getValue();
-//
-////                            hashMap = hashMapList.get(position);
-//
-//                            Log.d("hashMap", String.valueOf(hashMap));
-//                            Log.d("hashMap", hashMap.values()+":Values");
-//
-////                            Log.d("hashMappp", String.valueOf(hashMapList));
-//
-//                            datalist = (List<Object>) hashMap.values();
-//                            Log.d("list", String.valueOf(datalist));
-//                            date =(String) dataSnapshot.getKey();
-//                            data_of_list = (String) datalist.get(0);
-//
-//                            Log.d("datta", String.valueOf(data_of_list));
-//                            count++;
-//                        }
-//
-//
-//                        dataArray = data_of_list.split(";");
-//                        time = (String) dataArray[0];
-//                        pat_id =(String) dataArray[1];
-//
-//                        Log.d("actualData", date +","+ time +","+pat_id+"Inside");
-//
-//                        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Patients").child(pat_id);
-//                        final String finalDate = date;
-//                        final String finalTime = time;
-//
-//                        reference1.addListenerForSingleValueEvent(new ValueEventListener() {
-//                            String pat_name;
-//                            @Override
-//                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                                pat_name = snapshot.child("full_name").getValue(String.class);
-//                                Log.d("pat_name", pat_name);
-//
-//                                list.add(finalDate +";"+pat_name+";"+ finalTime);
-//                                Log.d("list", String.valueOf(list));
-//
-//                            }
-//
-//                            @Override
-//                            public void onCancelled(@NonNull DatabaseError error) {
-//                            } });
-//
-//                    }
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//                    }
-//                });
-
-
-
-//         holder.allAppointments_date_tv.setText(date);
-//        holder.allAppointments_patient_name_tv.setText(pat_name);
-//        holder.allAppointments_patient_time_tv.setText(time);
-
-//        String s = list.get(position);
-//        String dataArray[];
-//
-//        dataArray = s.split(";");
-//        String date = dataArray[0];
-//        final String pat_name = dataArray[1];
-//        String time = dataArray[2];
-//        String time_split[] = time.split("-");
-//        String time1 = time_split[0];
-//        String time2 = time_split[1];
-
-//        holder.date_tv.setText(date);
-//        holder.name_tv.setText(pat_name);
-//        holder.time_tv.setText(time1+" to");
-//        holder.time_tv2.setText(time2);
-
-
-
-
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView date_tv, name_tv, time_tv,time_tv2;
         CardView cardView;
+        CircleImageView pat_img;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -191,7 +104,7 @@ public class AllAppointments_Adapter extends FirebaseRecyclerAdapter<BookedSlots
             name_tv = (TextView) itemView.findViewById(R.id.name_tv);
             time_tv = (TextView) itemView.findViewById(R.id.time_tv);
             time_tv2 = (TextView) itemView.findViewById(R.id.time_tv2);
-
+            pat_img = (CircleImageView) itemView.findViewById(R.id.pat_img);
 
             cardView = (CardView) itemView.findViewById(R.id.cardView);
 

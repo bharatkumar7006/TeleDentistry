@@ -1,6 +1,7 @@
 package com.example.teledentistry.DoctorModule;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -33,11 +35,20 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.TimeZone;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -49,15 +60,16 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    Button currentPatient_btn,consultedPatient_btn,calender_btn,appoitments_btn,account_btn, blogs_and_articles_btn;
+    Button currentPatient_btn, consultedPatient_btn, calender_btn, appoitments_btn, account_btn, blogs_and_articles_btn;
     private CircleImageView doctor_profile_iv;
-    TextView timeLeft_tv, doc_Email, doc_Name,nav_header_name_tv,nav_header_email_tv;
+    TextView timeLeft_tv, doc_Email, doc_Name, nav_header_name_tv, nav_header_email_tv;
     String name, imageUrl;
     DatabaseReference reference;
     FirebaseAuth firebaseAuth;
     String userId;
     DoctorModel model;
-    CircleImageView online_iv, offline_iv,nav_header_iv;
+    CircleImageView online_iv, offline_iv, nav_header_iv;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,17 +91,28 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
         online_iv = findViewById(R.id.online_iv);
         offline_iv = findViewById(R.id.offline_iv);
 
-      //  online_iv.setVisibility(View.VISIBLE);
+        //  online_iv.setVisibility(View.VISIBLE);
         //offline_iv.setVisibility(View.VISIBLE);
 
 
-        if(Build.VERSION.SDK_INT>=21){
+        if (Build.VERSION.SDK_INT >= 21) {
             Window window = this.getWindow();
             window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
         }
 
+    //Firebase
+        firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
+        userId = user.getUid();
+
+        if (firebaseAuth.getCurrentUser() == null) {
+            finish();
+            startActivity(new Intent(this, LoginActivity_Doc_Module.class));
+        }
+
+
         // ActionBar and Navigation
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.bringToFront();
@@ -146,7 +169,6 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
         builder.setCalendarConstraints(constraintsBuilder.build());
 
 
-
         final MaterialDatePicker materialDatePicker = builder.build();
 
         currentPatient_btn.setOnClickListener(new View.OnClickListener() {
@@ -169,9 +191,11 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
 
             @Override
             public void onClick(View v) {
-                materialDatePicker.show(getSupportFragmentManager(),"Date Picker");
+                materialDatePicker.show(getSupportFragmentManager(), "Date Picker");
             }
         });
+
+
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Object selection) {
@@ -181,11 +205,11 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
                     String dayName = simpleDateFormatDay.format(selection);
 
                     Intent i = new Intent(getApplicationContext(), Calender_and_Schedule_Activity.class);
-                    i.putExtra("key",dayName);
+                    i.putExtra("key", dayName);
                     i.putExtra("date", materialDatePicker.getHeaderText());
                     startActivity(i);
 
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -215,15 +239,6 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
             }
         });
 
-        //Firebase
-        firebaseAuth = FirebaseAuth.getInstance();
-        final FirebaseUser user = firebaseAuth.getCurrentUser();
-        userId = user.getUid();
-
-        if(firebaseAuth.getCurrentUser() == null){
-            finish();
-            startActivity(new Intent(this, LoginActivity_Doc_Module.class));
-        }
 
         doc_Email.setText(user.getEmail());
 
@@ -233,18 +248,17 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 name = snapshot.child("full_name").getValue(String.class);
-                 doc_Name.setText(name);
+                name = snapshot.child("full_name").getValue(String.class);
+                doc_Name.setText(name);
                 Glide.with(getApplicationContext()).load(snapshot.child("imageUrl").getValue()).into(doctor_profile_iv);
                 Glide.with(getApplicationContext()).load(snapshot.child("imageUrl").getValue()).into(nav_header_iv);
                 nav_header_name_tv.setText(name);
                 nav_header_email_tv.setText(user.getEmail());
 
-                if(snapshot.child("status").getValue().equals("online")){
+                if (snapshot.child("status").getValue().equals("online")) {
                     online_iv.setVisibility(View.VISIBLE);
                     offline_iv.setVisibility(View.GONE);
-                }
-                else{
+                } else {
                     online_iv.setVisibility(View.GONE);
                     offline_iv.setVisibility(View.VISIBLE);
                 }
@@ -257,12 +271,101 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
             }
         });
 
+        //FirebaseTime - currentTime == 5 then send Notification to that particular patient.
+//
+//        DateFormat df = new SimpleDateFormat("dd, YYYY");
+//        Calendar calobj = Calendar.getInstance();
+//        String month_name = new SimpleDateFormat("MMM").format(calobj.getTime());
+//        String today1 = month_name +" "+ df.format(calobj.getTime());
+//        Log.d("today1", today1);
+//
+//        Query reference1;
+//        reference = FirebaseDatabase.getInstance().getReference("Doctors").child(userId); //.orderByChild("booked slots").equalTo(today1);
+//        final List<String> time_list = new ArrayList<>();
+//
+//        reference.child("booked slots").addListenerForSingleValueEvent(new ValueEventListener() {
+//            HashMap<String, Object> hashMap = new HashMap<>();
+//            String s = "";
+//            @RequiresApi(api = Build.VERSION_CODES.O)
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+//                    hashMap = (HashMap<String, Object>) dataSnapshot.getValue();
+//                    Log.d("hashMappp", String.valueOf(hashMap.get("time")));
+//                }
+//                String time = (String) hashMap.get("time");
+//                String complt_time[] = time.split("-");
+//                String consult_time = complt_time[0];
+//                String actual_time[];
+//                if(consult_time.contains("AM")){
+//                    actual_time = consult_time.split("AM");
+//                }
+//                else{
+//                    actual_time = consult_time.split("PM");
+//                }
+//                String ac_time = actual_time[0];
+//                Log.d("conslttt", String.valueOf(ac_time));
+//
+//                DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS'Z'");
+//                String current_time = simpleDateFormat.format(new Date());
+//
+//
+//                Date date1= null;
+//                Date date2 = null;
+//                try {
+//                    date1 = simpleDateFormat.parse(ac_time);
+//                    date2 = simpleDateFormat.parse(current_time);
+//                    long difference = date2.getTime() - date1.getTime();
+//                    Log.d("ddd", String.valueOf(date1));
+//                    Log.d("ddd", String.valueOf(date2));
+//                    System.out.println(date1);
+//
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+//
+//
+//
+//////                    long differenceInHours
+//////                            = (differenceInMilliSeconds / (60 * 60 * 1000))
+//////                            % 24;
+//////
+//////                    // Calculating the difference in Minutes
+//////                    long differenceInMinutes
+//////                            = (differenceInMilliSeconds / (60 * 1000)) % 60;
+////
+////                    Log.d("difff",differenceInHours+" "+differenceInMinutes);
+//
+//                Log.d("currenttt", String.valueOf(current_time));
+//
+//
+////                    time_list.add(snapshot.getValue(String.class));
+//
+////
+////                Log.d("time_list", String.valueOf(time_list));
+//
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//
+
+
+
+
+
+
     }
 
 
-    private void status(String status){
-        HashMap<String,Object> hashMap = new HashMap<>();
-        hashMap.put("status",status);
+    private void status(String status) {
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
         reference.updateChildren(hashMap);
     }
 
@@ -278,11 +381,11 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
         String timeLeftText;
 
         timeLeftText = "" + minutes;
-        timeLeftText+=":" ;
-        if(seconds < 15) timeLeftText+="0";
+        timeLeftText += ":";
+        if (seconds < 15) timeLeftText += "0";
         timeLeftText += seconds;
 
-        timeLeft_tv.setText("Time left for next consultation "+timeLeftText);
+        timeLeft_tv.setText("Time left for next consultation " + timeLeftText);
 
     }
 
@@ -317,7 +420,7 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
                 startActivity(i);
                 break;
             }
-            case R.id.nav_profile:{
+            case R.id.nav_profile: {
                 Intent i = new Intent(DoctorHomeActivity.this, Doc_Main_Profile_Activity.class);
                 startActivity(i);
                 break;
@@ -349,11 +452,10 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
     }
 
     @Override
-    public void onBackPressed(){
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else{
+        } else {
             super.onBackPressed();
         }
 

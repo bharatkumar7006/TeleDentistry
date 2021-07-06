@@ -36,7 +36,7 @@ public class AppointmentpayFinishSpecialistActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
     String userId;
-    String pat_name;
+    String pat_name, imageUrl;
     BookedSlots_Model bookedSlots_model;
 
     @Override
@@ -66,6 +66,8 @@ public class AppointmentpayFinishSpecialistActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     // Doctors --> booked Slots date, slot, pat_id
     //Patient --> booked slots date slot, doc_id
@@ -104,7 +106,8 @@ public class AppointmentpayFinishSpecialistActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             pat_name = snapshot.child("full_name").getValue(String.class);
-                            bookedSlots_model = new BookedSlots_Model(date,pat_name,bookedSlot, userId);
+                            imageUrl = snapshot.child("imageUrl").getValue(String.class);
+                            bookedSlots_model = new BookedSlots_Model(date,pat_name,bookedSlot, userId,imageUrl, bookingFor, reasonFor);
                             databaseReference1.setValue(bookedSlots_model);
                         }
 
@@ -118,6 +121,7 @@ public class AppointmentpayFinishSpecialistActivity extends AppCompatActivity {
 //                    HashMap<String,Object> hashMap = new HashMap<>();
 
                     List<String> stringList = (List<String>) postHashMap.get(date);
+                    assert stringList != null;
                     stringList.remove(bookedSlot);
                     postHashMap.put(date,stringList);
 
@@ -142,12 +146,9 @@ public class AppointmentpayFinishSpecialistActivity extends AppCompatActivity {
 
                     hashMap1.put("slots",postHashMap);
 
-                    databaseReference.updateChildren(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(AppointmentpayFinishSpecialistActivity.this,"Data sat on firebase",Toast.LENGTH_SHORT).show();
-                            }
+                    databaseReference.updateChildren(hashMap1).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(AppointmentpayFinishSpecialistActivity.this,"Data sat on firebase",Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -158,7 +159,7 @@ public class AppointmentpayFinishSpecialistActivity extends AppCompatActivity {
                     patient_reference1 = FirebaseDatabase.getInstance().getReference("Patients")
                             .child(userId).child("booked slots").push();
 
-                    BookedSlots_Model bookedSlots_model1 = new BookedSlots_Model(date,doc_id,bookedSlot);
+                    BookedSlots_Model bookedSlots_model1 = new BookedSlots_Model(date,doc_id,bookedSlot, bookingFor, reasonFor);
                     patient_reference1.setValue(bookedSlots_model1);
 
 
@@ -218,7 +219,7 @@ public class AppointmentpayFinishSpecialistActivity extends AppCompatActivity {
     }
 
     public void openDialog(){
-       OpenDialogAppintmentSpecialistclass openDialogAppintmentSpecialistclassn=new OpenDialogAppintmentSpecialistclass();
+       OpenDialogAppintmentSpecialistclass openDialogAppintmentSpecialistclassn=new OpenDialogAppintmentSpecialistclass(bookedSlot,getApplicationContext());
       openDialogAppintmentSpecialistclassn.show(getSupportFragmentManager(),"open_dialog_appointment_specialist_class");
     }
 }

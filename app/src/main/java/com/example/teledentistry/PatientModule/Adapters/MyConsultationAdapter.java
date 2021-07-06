@@ -13,7 +13,7 @@ import com.example.teledentistry.PatientModule.Fragments.Consultation_Dropped_Fr
 import com.example.teledentistry.PatientModule.Fragments.Consultation_Missed_Fragment;
 import com.example.teledentistry.PatientModule.Fragments.Consultation_Rejected_Fragment;
 import com.example.teledentistry.PatientModule.Fragments.Consulted_Fragment;
-import com.example.teledentistry.PatientModule.Fragments.Upcomig_consultation_fragment;
+import com.example.teledentistry.PatientModule.Fragments.Upcoming_consultation_fragment;
 
 public class MyConsultationAdapter extends FragmentPagerAdapter {
     private Context context;
@@ -34,8 +34,8 @@ public class MyConsultationAdapter extends FragmentPagerAdapter {
             return all_consultation_fragment;
         }
         if(position == 1) {
-            Upcomig_consultation_fragment upcomig_consultation_fragment = new Upcomig_consultation_fragment();
-            return upcomig_consultation_fragment;
+            Upcoming_consultation_fragment upcoming_consultation_fragment = new Upcoming_consultation_fragment();
+            return upcoming_consultation_fragment;
         }
         if(position == 2){
             Consulted_Fragment consulted_fragment = new Consulted_Fragment();

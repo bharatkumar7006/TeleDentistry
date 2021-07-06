@@ -20,6 +20,8 @@
         android:layout_marginRight="32dp"
         android:background="@drawable/button_style_selector_doc_module"
         android:text="Launch"
+        app:backgroundTint="#1E88E5"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

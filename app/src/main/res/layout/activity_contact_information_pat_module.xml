@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="PatientModule.ContactInformationActivity">
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="271dp"
@@ -13,7 +14,7 @@
         android:textAlignment="center"
         android:textStyle="bold"
         android:fontFamily="sans-serif-condensed-medium"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:textColor="#1E88E5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,46 +156,42 @@
         android:id="@+id/empty_icon"
         android:layout_width="10dp"
         android:layout_height="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.791"
+        app:layout_constraintTop_toBottomOf="@+id/Enum"
         app:srcCompat="@drawable/circle_blank1_doc_module" />
 
     <ImageView
         android:id="@+id/filled_icon"
         android:layout_width="10dp"
         android:layout_height="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toEndOf="@+id/empty_icon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.791"
+        app:layout_constraintTop_toBottomOf="@+id/Enum"
         app:srcCompat="@drawable/color_filled_doc_module" />
 
     <Button
         android:id="@+id/next"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/button_bg_doc_module"
+        android:fontFamily="sans-serif-condensed-medium"
         android:paddingLeft="8dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:background="@drawable/button_bg_doc_module"
-        android:fontFamily="sans-serif-condensed-medium"
         android:text="Next"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.329"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Enum"
-        app:layout_constraintVertical_bias="0.808"
+        app:layout_constraintTop_toBottomOf="@+id/empty_icon"
         app:layout_constraintWidth_percent=".8" />
 
     <TextView

@@ -8,18 +8,28 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.teledentistry.Consulted_Patient_Model;
+import com.example.teledentistry.DoctorModule.BookedSlots_Model;
 import com.example.teledentistry.DoctorModule.PatientConsultedActivity;
 import com.example.teledentistry.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class ConsultedPatientListAdapter extends RecyclerView.Adapter<ConsultedPatientListAdapter.ViewHolder>{
-    Context context;
-    String consultedPatientName_list[];
+import de.hdodenhof.circleimageview.CircleImageView;
 
-    public ConsultedPatientListAdapter(Context context, String[] consultedPatient_list) {
+public class ConsultedPatientListAdapter extends FirebaseRecyclerAdapter<Consulted_Patient_Model, ConsultedPatientListAdapter.ViewHolder> {
+    FirebaseRecyclerOptions<Consulted_Patient_Model> options;
+    static Context context;
+
+    public ConsultedPatientListAdapter(Context context, FirebaseRecyclerOptions<Consulted_Patient_Model> options) {
+        super(options);
         this.context = context;
-        this.consultedPatientName_list = consultedPatient_list;
+        this.options = options;
+
     }
 
     @NonNull
@@ -31,25 +41,41 @@ public class ConsultedPatientListAdapter extends RecyclerView.Adapter<ConsultedP
         return viewHolder;
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.consulted_patient_name_tv.setText(consultedPatientName_list[position]);
+    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Consulted_Patient_Model model) {
+
+        String time = model.getTime();
+        String time_split[] = time.split("-");
+        String time1 = time_split[0];
+        String time2 = time_split[1];
+
+        holder.date_tv.setText(model.getDate());
+        holder.name_tv.setText(model.getPat_name());
+        holder.time_tv.setText(time1+" to");
+        holder.time_tv2.setText(time2);
+        Glide.with(ConsultedPatientListAdapter.context).load(model.getImageUrl()).into(holder.pat_img);
 
 
     }
 
-    @Override
-    public int getItemCount() {
-        return consultedPatientName_list.length;
-    }
 
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public TextView date_tv, name_tv, time_tv, time_tv2;
+        CardView cardView;
+        CircleImageView pat_img;
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public TextView consulted_patient_name_tv;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            consulted_patient_name_tv = itemView.findViewById(R.id.consultedPatient_name_tv);
-            itemView.setOnClickListener(this);
+
+            date_tv = itemView.findViewById(R.id.date_tv);
+            name_tv = itemView.findViewById(R.id.name_tv);
+            time_tv = itemView.findViewById(R.id.time_tv);
+            time_tv2 = itemView.findViewById(R.id.time_tv2);
+            pat_img = (CircleImageView) itemView.findViewById(R.id.pat_img);
+            cardView = (CardView) itemView.findViewById(R.id.cardView);
+
+
         }
 
         @Override

@@ -9,15 +9,21 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
 
+import com.example.teledentistry.Consulted_Patient_Model;
 import com.example.teledentistry.DoctorModule.Adapters.ConsultedPatientListAdapter;
 import com.example.teledentistry.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ConsultedPatientListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     RecyclerView consultedPatient_recyclerView;
@@ -26,6 +32,14 @@ public class ConsultedPatientListActivity extends AppCompatActivity implements N
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     String consulted_patient[];
+
+    ConsultedPatientListAdapter consultedPatientListAdapter;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
+    String userId;
+    private LinearLayoutManager manager;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +52,17 @@ public class ConsultedPatientListActivity extends AppCompatActivity implements N
             window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
         }
 
-
         consultedPatient_recyclerView = findViewById(R.id.consultedPatient_recycleView);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_Layout);
         navigationView = findViewById(R.id.navigation);
+
+        context = getApplicationContext();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        userId = user.getUid();
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -51,16 +71,38 @@ public class ConsultedPatientListActivity extends AppCompatActivity implements N
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
 
-        consulted_patient = getResources().getStringArray(R.array.consulted_patient);
-        ConsultedPatientListAdapter consultedPatientListAdapter = new ConsultedPatientListAdapter(this, consulted_patient);
-        consultedPatient_recyclerView.setHasFixedSize(true);
-        consultedPatient_recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        final FirebaseRecyclerOptions<Consulted_Patient_Model> options =
+                new FirebaseRecyclerOptions.Builder<Consulted_Patient_Model>()
+                        .setQuery(FirebaseDatabase.getInstance()
+                                .getReference("Doctors").child(userId).child("Consulted_Patient"), Consulted_Patient_Model.class)
+                        .build();
+
+        consultedPatientListAdapter = new ConsultedPatientListAdapter(context, options);
+        manager = new LinearLayoutManager(this);
+        consultedPatient_recyclerView.setLayoutManager(manager);
         consultedPatient_recyclerView.setAdapter(consultedPatientListAdapter);
+        consultedPatientListAdapter.notifyDataSetChanged();
+        consultedPatientListAdapter.startListening();
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         consultedPatient_recyclerView.addItemDecoration(dividerItemDecoration);
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        consultedPatientListAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(consultedPatientListAdapter != null) {
+            consultedPatientListAdapter.stopListening();
+        }
+    }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

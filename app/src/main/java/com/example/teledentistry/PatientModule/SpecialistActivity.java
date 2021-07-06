@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.LongDef;
@@ -23,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.teledentistry.DoctorModule.DoctorModel;
 import com.example.teledentistry.PatientModule.Adapters.Specialist_Adapter;
 import com.example.teledentistry.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
 import com.google.android.material.navigation.NavigationView;
@@ -52,6 +56,8 @@ public class SpecialistActivity extends AppCompatActivity implements NavigationV
     NavigationView navigationView;
     ArrayList<DoctorModel> doctorModelArrayList, doctorModelArrayList2;
     DoctorModel model;
+    public  Context context;
+
 
 
     @Override
@@ -72,10 +78,11 @@ public class SpecialistActivity extends AppCompatActivity implements NavigationV
                                 .getReference("Doctors"), DoctorModel.class)
                         .build();
 
-        final Context context;
         context = getApplicationContext();
         specialist_adapter=new Specialist_Adapter(options,context);
         recyclerView.setAdapter(specialist_adapter);
+        specialist_adapter.notifyDataSetChanged();
+        specialist_adapter.startListening();
 
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_Layout);
@@ -125,6 +132,7 @@ public class SpecialistActivity extends AppCompatActivity implements NavigationV
 
 
 
+
 //        reference.addListenerForSingleValueEvent(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -140,9 +148,45 @@ public class SpecialistActivity extends AppCompatActivity implements NavigationV
 //            }
 //        });
 //
+        
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_menu,menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                processSearch(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                processSearch(newText);
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void processSearch(String s) {
+        final FirebaseRecyclerOptions<DoctorModel> options =
+                new FirebaseRecyclerOptions.Builder<DoctorModel>()
+                        .setQuery(FirebaseDatabase.getInstance()
+                                .getReference("Doctors").orderByChild("full_name").startAt(s).endAt(s+"\uf8ff"), DoctorModel.class)
+                        .build();
+
+        specialist_adapter = new Specialist_Adapter(options, context);
+        specialist_adapter.notifyDataSetChanged();
+        specialist_adapter.startListening();
+        recyclerView.setAdapter(specialist_adapter);
 
     }
+
 //
 //private void status(String status){
 //    HashMap<String,Object> hashMap = new HashMap<>();

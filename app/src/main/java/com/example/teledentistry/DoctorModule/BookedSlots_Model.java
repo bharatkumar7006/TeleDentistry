@@ -6,15 +6,46 @@ public class BookedSlots_Model {
     String time;
     String pat_id;
     String doc_id;
+    String imageUrl;
+    String bookingFor, reasonFor;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public BookedSlots_Model() {
     }
 
-    public BookedSlots_Model(String date, String patient_name, String time,String pat_id) {
+    public BookedSlots_Model(String date, String patient_name, String time,String pat_id,String imageUrl, String bookingFor,
+                             String reasonFor) {
         this.date = date;
         this.full_name = patient_name;
         this.time = time;
         this.pat_id = pat_id;
+        this.imageUrl = imageUrl;
+        this.bookingFor = bookingFor;
+        this.reasonFor = reasonFor;
+
+    }
+
+    public String getBookingFor() {
+        return bookingFor;
+    }
+
+    public void setBookingFor(String bookingFor) {
+        this.bookingFor = bookingFor;
+    }
+
+    public String getReasonFor() {
+        return reasonFor;
+    }
+
+    public void setReasonFor(String reasonFor) {
+        this.reasonFor = reasonFor;
     }
 
     public String getDate() {
@@ -58,9 +89,12 @@ public class BookedSlots_Model {
 
 
 
-    public BookedSlots_Model(String date, String doc_id, String time) {
+    public BookedSlots_Model(String date, String doc_id, String time, String bookingFor, String reasonFor) {
         this.date = date;
         this.doc_id = doc_id;
         this.time = time;
+        this.bookingFor = bookingFor;
+        this.reasonFor = reasonFor;
+
     }
 }

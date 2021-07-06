@@ -30,32 +30,33 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_nav_menu_icon_doc_module" />
 
-    <ImageView
-        android:id="@+id/imageView7"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/pat_img"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:background="@drawable/round_border_doc_module"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:srcCompat="@drawable/ic_name_doc_module" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/pat_name_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="32dp"
         android:gravity="center"
         android:text="Profile of Patient"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
+        android:paddingLeft="2dp"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/toggleButton"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintStart_toEndOf="@+id/pat_img"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:ignore="RtlCompat" />
 
     <ToggleButton
         android:id="@+id/toggleButton"
@@ -65,12 +66,12 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="3dp"
         android:text="ToggleButton"
-        app:layout_constraintEnd_toStartOf="@+id/imageView8"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/call_icon"
+        app:layout_constraintStart_toEndOf="@+id/pat_name_tv"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/call_icon"
         android:layout_width="27dp"
         android:layout_height="22dp"
         android:layout_marginTop="32dp"
@@ -79,32 +80,34 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:srcCompat="@drawable/ic_phone_doc_module" />
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="27dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/toggleButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:srcCompat="@drawable/ic_chat_doc_module" />
+        <Button
+            android:id="@+id/send_btn"
+            android:layout_width="76dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="Send"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/toggleButton"
+            app:layout_constraintTop_toBottomOf="@+id/call_icon"
+            app:srcCompat="@drawable/ic_send" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/time_running_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="6dp"
         android:gravity="center"
         android:text="Time Running of Patient"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/toggleButton"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintStart_toEndOf="@+id/pat_img"
+        app:layout_constraintTop_toBottomOf="@+id/pat_name_tv"
+        tools:ignore="RtlCompat" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout2"
@@ -114,7 +117,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/time_running_tv"
         app:tabIndicatorAnimationDuration="@android:integer/config_shortAnimTime"
         app:tabIndicatorColor="#1E88E5"
         app:tabMode="scrollable"

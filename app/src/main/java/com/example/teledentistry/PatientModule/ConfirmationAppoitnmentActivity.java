@@ -27,7 +27,6 @@ public class ConfirmationAppoitnmentActivity extends AppCompatActivity {
         bookingFor = findViewById(R.id.booking_for);
         reasonFor = findViewById(R.id.reasonForAppointmentEditText);
 
-
         Intent i = getIntent();
         final String date, bookedSlot,fee;
         date = i.getStringExtra("date");
@@ -45,6 +44,7 @@ public class ConfirmationAppoitnmentActivity extends AppCompatActivity {
                 intent.putExtra("reasonFor",reasonFor.getText().toString());
                 intent.putExtra("fee",fee);
                 intent.putExtra("numb",numb);
+
                 startActivity(intent);
             }
         });

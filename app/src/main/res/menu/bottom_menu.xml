@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/ic_home_doc_module"
+        android:title="Home" />
+    <item
+        android:icon="@drawable/ic_name_doc_module"
+        android:title="Profile" />
+    <item
+        android:icon="@drawable/ic_settings_doc_module"
+        android:title="Settings" />
+    <item
+        android:icon="@drawable/ic_baseline_directions_run"
+        android:title="Logout" />
+</menu>

@@ -1,9 +1,14 @@
 package com.example.teledentistry.PatientModule;
 
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -21,9 +28,12 @@ import com.bumptech.glide.Glide;
 import com.example.teledentistry.DoctorModule.LoginActivity_Doc_Module;
 import com.example.teledentistry.PatientModule.Adapters.SliderAdapter;
 import com.example.teledentistry.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -89,6 +99,12 @@ public class PatientHomeActivity extends AppCompatActivity implements Navigation
             startActivity(intent);
         }
 
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = new NotificationChannel("1","My Notification",NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(notificationChannel);
+
+        }
 
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
@@ -172,6 +188,7 @@ public class PatientHomeActivity extends AppCompatActivity implements Navigation
         final FirebaseUser user = firebaseAuth.getCurrentUser();
         final String userId = user.getUid();
 
+
         email.setText(user.getEmail());
         header_patient_profile_iv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,6 +226,20 @@ public class PatientHomeActivity extends AppCompatActivity implements Navigation
                     online_iv.setVisibility(View.GONE);
                     offline_iv.setVisibility(View.VISIBLE);
                 }
+
+//                if(snapshot.child("doc_join").getValue(String.class).equalsIgnoreCase("true")){
+//                    NotificationCompat.Builder builder = new NotificationCompat.Builder(PatientHomeActivity.this, "1");
+//                    builder.setContentTitle("Meeting Started");
+//                    builder.setContentText("Hello Dear "+snapshot.child("full_name").getValue(String.class)+", this is your meeting code "
+//                            +snapshot.child("meeting_code").getValue(String.class)+" please use it and join the meeting");
+//                    builder.setSmallIcon(R.drawable.ic_notification_pat_module);
+//                    builder.setAutoCancel(true);
+//
+//                    NotificationManagerCompat managerCompat = NotificationManagerCompat.from(PatientHomeActivity.this);
+//                    managerCompat.notify(1, builder.build());
+//
+//                 }
+
             }
 
             @Override

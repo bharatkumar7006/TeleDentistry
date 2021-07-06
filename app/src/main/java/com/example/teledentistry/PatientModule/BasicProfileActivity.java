@@ -38,6 +38,7 @@ import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClic
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -72,7 +73,7 @@ public class BasicProfileActivity extends AppCompatActivity implements AdapterVi
     String txt_gender, txt_dob, txt_maritalStatus, txt_feet, txt_inches, txt_bloodGroup, txt_weight,txt_age;
     FirebaseAuth firebaseAuth;
     private StorageReference referenceStorage = FirebaseStorage.getInstance().getReference("Images");
-
+    String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -249,6 +250,14 @@ public class BasicProfileActivity extends AppCompatActivity implements AdapterVi
                                             final String userId = firebaseUser.getUid();
                                             final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Patients").child(userId);
 
+                                            firebaseUser.getIdToken(true)
+                                                    .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<GetTokenResult> task) {
+                                                            token = task.getResult().getToken();
+                                                        }
+                                                    });
+
                                             HashMap<String, Object> hashMap = new HashMap<>();
                                             hashMap.put("full_name", fullName);
                                             hashMap.put("email", email);
@@ -263,6 +272,7 @@ public class BasicProfileActivity extends AppCompatActivity implements AdapterVi
                                             hashMap.put("blood_group", txt_bloodGroup);
                                             hashMap.put("weight", txt_weight);
                                             hashMap.put("imageUrl", uri.toString());
+                                            hashMap.put("user_token",token);
 
                                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
