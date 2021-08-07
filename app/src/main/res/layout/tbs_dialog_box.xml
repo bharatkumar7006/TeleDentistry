@@ -21,7 +21,9 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="273dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="10dp">
@@ -31,34 +33,57 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView21"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                app:srcCompat="@drawable/video_call_logo" />
-
             <EditText
-                android:id="@+id/meeting_codeBox"
+                android:id="@+id/tbs_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/round_border3_doc_module"
                 android:ems="10"
-                android:hint="Enter Your Code Here"
+                android:hint="Enter Tab Name"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/dosage_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/round_border3_doc_module"
+                android:ems="10"
+                android:hint="Enter Dosage"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/comments_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/round_border3_doc_module"
+                android:ems="10"
+                android:hint="Enter Comments"
                 android:inputType="textPersonName"
                 android:padding="10dp"
                 android:textAlignment="center" />
 
             <Button
-                android:id="@+id/sendCode_btn"
+                android:id="@+id/addTabs_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/round_border_doc_module"
-                android:text="SEND"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/round_border2_doc_module"
+                android:text="Add"
                 android:textAlignment="center"
                 android:textColor="#ffff"
                 android:textStyle="bold" />

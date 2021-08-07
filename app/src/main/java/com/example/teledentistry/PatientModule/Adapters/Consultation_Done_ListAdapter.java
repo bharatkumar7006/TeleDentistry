@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.teledentistry.Consulted_Patient_Model;
 import com.example.teledentistry.DoctorModule.PatientConsultedActivity;
 import com.example.teledentistry.PatientModule.Consultation_Done_Model;
+import com.example.teledentistry.PatientModule.PresciptionPatModuleActivity;
 import com.example.teledentistry.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -24,11 +25,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Consultation_Done_ListAdapter extends FirebaseRecyclerAdapter<Consultation_Done_Model, Consultation_Done_ListAdapter.ViewHolder> {
     FirebaseRecyclerOptions<Consultation_Done_Model> options;
     static Context context;
+    String pat_id;
 
-    public Consultation_Done_ListAdapter(Context context, FirebaseRecyclerOptions<Consultation_Done_Model> options) {
+    public Consultation_Done_ListAdapter(Context context, FirebaseRecyclerOptions<Consultation_Done_Model> options, String pat_id) {
         super(options);
         this.context = context;
         this.options = options;
+        this.pat_id = pat_id;
 
     }
 
@@ -55,6 +58,16 @@ public class Consultation_Done_ListAdapter extends FirebaseRecyclerAdapter<Consu
         holder.time_tv.setText(time1+" to");
         holder.time_tv2.setText(time2);
         Glide.with(Consultation_Done_ListAdapter.context).load(model.getImageUrl()).into(holder.doc_img);
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PresciptionPatModuleActivity.class);
+                intent.putExtra("pat_id", pat_id);
+                intent.putExtra("doc_id",model.getDoc_name());
+                context.startActivity(intent);
+            }
+        });
 
 
     }

@@ -40,60 +40,35 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:srcCompat="@drawable/ic_name_doc_module" />
 
-    <TextView
-        android:id="@+id/pat_name_tv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:text="Profile of Patient"
-        android:textAlignment="textStart"
-        android:paddingLeft="2dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/toggleButton"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/pat_img"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        tools:ignore="RtlCompat" />
+        <TextView
+            android:id="@+id/pat_name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:text="Profile of Patient"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/call_btn"
+            app:layout_constraintStart_toEndOf="@+id/pat_img"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:ignore="RtlCompat" />
 
-    <ToggleButton
-        android:id="@+id/toggleButton"
-        android:layout_width="49dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="3dp"
-        android:text="ToggleButton"
-        app:layout_constraintEnd_toStartOf="@+id/call_icon"
-        app:layout_constraintStart_toEndOf="@+id/pat_name_tv"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
-
-    <ImageView
-        android:id="@+id/call_icon"
-        android:layout_width="27dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:srcCompat="@drawable/ic_phone_doc_module" />
 
         <Button
-            android:id="@+id/send_btn"
+            android:id="@+id/call_btn"
             android:layout_width="76dp"
             android:layout_height="36dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:text="Send"
+            android:text="Call"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/toggleButton"
-            app:layout_constraintTop_toBottomOf="@+id/call_icon"
-            app:srcCompat="@drawable/ic_send" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-    <TextView
+        <TextView
         android:id="@+id/time_running_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -104,7 +79,7 @@
         android:textAlignment="textStart"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/toggleButton"
+        app:layout_constraintEnd_toStartOf="@+id/call_btn"
         app:layout_constraintStart_toEndOf="@+id/pat_img"
         app:layout_constraintTop_toBottomOf="@+id/pat_name_tv"
         tools:ignore="RtlCompat" />
@@ -126,21 +101,12 @@
         app:tabTextColor="#1E88E5">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/recieveAssessement_tab"
+            android:id="@+id/pat_history_tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:icon="@drawable/ic_received_doc_module"
-            android:text="Recieved Assessment"
-
-            />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/chat_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_chat_doc_module"
+            android:icon="@drawable/ic_mhistory_pat_module"
             android:outlineSpotShadowColor="#1E88E5"
-            android:text="Chat" />
+            android:text="Patient History" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/uploadPriscription_tab"
@@ -150,13 +116,7 @@
             android:outlineSpotShadowColor="#1E88E5"
             android:text="Upload Priscription" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/call_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_phone_doc_module"
-            android:outlineSpotShadowColor="#1E88E5"
-            android:text="Call" />
+
 
     </com.google.android.material.tabs.TabLayout>
 

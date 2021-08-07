@@ -141,7 +141,6 @@ public class Specialist_Adapter extends FirebaseRecyclerAdapter<DoctorModel, Spe
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         HashMap<String, Object> hashMap = new HashMap<>();
 
-
                     }
 
                     @Override

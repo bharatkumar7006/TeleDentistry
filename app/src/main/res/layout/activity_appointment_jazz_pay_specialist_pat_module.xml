@@ -279,7 +279,7 @@
             app:layout_constraintVertical_bias="0.058">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cvv"
+                android:id="@+id/cnic"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"

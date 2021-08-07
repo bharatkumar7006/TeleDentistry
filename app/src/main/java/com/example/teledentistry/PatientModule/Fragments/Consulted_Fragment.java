@@ -100,7 +100,7 @@ public class Consulted_Fragment extends Fragment {
                                 .getReference("Patients").child(userId).child("Consultation_Done"), Consultation_Done_Model.class)
                         .build();
 
-        consultation_done_listAdapter  = new Consultation_Done_ListAdapter(context, options);
+        consultation_done_listAdapter  = new Consultation_Done_ListAdapter(context, options,userId);
         manager = new LinearLayoutManager(context);
         consultation_done_Patient_recyclerView.setLayoutManager(manager);
         consultation_done_Patient_recyclerView.setAdapter(consultation_done_listAdapter);

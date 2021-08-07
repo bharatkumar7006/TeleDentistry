@@ -58,11 +58,9 @@ public class PatientConsultationActivity extends AppCompatActivity implements Na
     CircleImageView pat_img;
     CountDownTimer countDownTimer;
     long timeInMilliSec = 900000;
-    ImageView call_icon;
-    public static ToggleButton toggleButton;
     Dialog dialog;
     EditText codeBox,  meeting_codeBox;
-    Button jointBtn, sendCode_btn;
+    Button jointBtn, sendCode_btn, call_btn;
     URL serverUrl;
     String phone_no, token;
     Button send_btn;
@@ -81,9 +79,8 @@ public class PatientConsultationActivity extends AppCompatActivity implements Na
         pat_name_tv = findViewById(R.id.pat_name_tv);
         pat_runningTime_tv = findViewById(R.id.time_running_tv);
         pat_img = findViewById(R.id.pat_img);
-        call_icon = findViewById(R.id.call_icon);
-        toggleButton = findViewById(R.id.toggleButton);
-        send_btn = findViewById(R.id.send_btn);
+        call_btn = findViewById(R.id.call_btn);
+
 
         if (Build.VERSION.SDK_INT >= 21) {
             window = this.getWindow();
@@ -116,24 +113,24 @@ public class PatientConsultationActivity extends AppCompatActivity implements Na
             e.printStackTrace();
         }
 
-        send_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog = new Dialog(v.getContext());
-                dialog.setContentView(R.layout.meeting_code_dialog_box);
-                meeting_codeBox = dialog.findViewById(R.id.meeting_codeBox);
-                sendCode_btn = dialog.findViewById(R.id.sendCode_btn);
-
-         //       getToken(pat_id);
-
-                dialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
-                dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
-                dialog.show();
-
-            }
-
-
-        });
+//        send_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog = new Dialog(v.getContext());
+//                dialog.setContentView(R.layout.meeting_code_dialog_box);
+//                meeting_codeBox = dialog.findViewById(R.id.meeting_codeBox);
+//                sendCode_btn = dialog.findViewById(R.id.sendCode_btn);
+//
+//         //       getToken(pat_id);
+//
+//                dialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+//                dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
+//                dialog.show();
+//
+//            }
+//
+//
+//        });
 
 
 
@@ -156,7 +153,7 @@ public class PatientConsultationActivity extends AppCompatActivity implements Na
 //        });
 //
 
-        call_icon.setOnClickListener(v -> {
+        call_btn.setOnClickListener(v -> {
             dialog = new Dialog(v.getContext());
             dialog.setContentView(R.layout.meeting_dialog_box_doc);
             codeBox = dialog.findViewById(R.id.codeBox);
@@ -203,7 +200,7 @@ public class PatientConsultationActivity extends AppCompatActivity implements Na
         }.start();
 
 
-        final PatientConsultationAdapter patientConsultationAdapter = new PatientConsultationAdapter(getSupportFragmentManager(), 0, this, tabLayout2.getTabCount());
+        final PatientConsultationAdapter patientConsultationAdapter = new PatientConsultationAdapter(getSupportFragmentManager(), 0, this, tabLayout2.getTabCount(), pat_id);
         viewPager2.setAdapter(patientConsultationAdapter);
         viewPager2.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout2));
 
@@ -233,37 +230,6 @@ public class PatientConsultationActivity extends AppCompatActivity implements Na
 
     }
 
-    private void getToken(String pat_id) {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Patients").child(pat_id);
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                token = snapshot.child("user_token").getValue(String.class);
-                Log.d("tokennn",token);
-                sendCode_btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Log.d("tokennnn",token);
-                        FcmNotificationsSender notificationsSender = new FcmNotificationsSender(token,
-                                "Dear Patient, Your meeting has been started please use this code and join the meeting",
-                                meeting_codeBox.getText().toString(),getApplicationContext(),
-                                PatientConsultationActivity.this);
-
-                        notificationsSender.SendNotifications();
-
-                        dialog.dismiss();
-                    }
-                });
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }//end of getToken method
 
 
 //    private void sendMsg(String phoneNo) {

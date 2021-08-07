@@ -23,64 +23,64 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="778dp"
+        android:layout_margin="8dp"
         android:layout_marginTop="20dp"
+        android:stretchColumns="1,2,3,4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView48">
 
         <TableRow>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_column="1"
+                android:gravity="center"
+                android:padding="10dp"
                 android:text="Date"
-                android:textAlignment="center"
-                android:textColor="#1E88E5"
+                android:textColor="#3949AB"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_column="1"
+                android:gravity="center"
+                android:padding="10dp"
                 android:text="Patient Name"
-                android:textAlignment="center"
-                android:textColor="#1E88E5"
+                android:textColor="#3949AB"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_column="1"
+                android:gravity="center"
+                android:padding="10dp"
                 android:text="Disease"
-                android:textAlignment="center"
-                android:textColor="#1E88E5"
+                android:textColor="#3949AB"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_column="1"
+                android:gravity="center"
+                android:padding="10dp"
                 android:text="Amount"
-                android:textAlignment="center"
-                android:textColor="#1E88E5"
+                android:textColor="#3949AB"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
         </TableRow>
 
-        <TableRow
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/table_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+
+            />
 
     </TableLayout>
 

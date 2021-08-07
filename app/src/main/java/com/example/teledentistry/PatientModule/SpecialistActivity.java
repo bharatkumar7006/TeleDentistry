@@ -179,6 +179,7 @@ public class SpecialistActivity extends AppCompatActivity implements NavigationV
                         .setQuery(FirebaseDatabase.getInstance()
                                 .getReference("Doctors").orderByChild("full_name").startAt(s).endAt(s+"\uf8ff"), DoctorModel.class)
                         .build();
+        Log.d("dataaa", String.valueOf(options));
 
         specialist_adapter = new Specialist_Adapter(options, context);
         specialist_adapter.notifyDataSetChanged();

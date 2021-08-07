@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_Layout"
-    tools:context=".MyConsultationActivity">
+    tools:context="PatientModule.MyConsultationActivity">
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="match_parent"
@@ -62,11 +62,6 @@
             app:tabSelectedTextColor="#1E88E5"
             app:tabTextColor="#1E88E5">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/all_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="All" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/upcoming_tab"
@@ -80,27 +75,6 @@
             android:layout_height="wrap_content"
             android:text="consulted" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/missed_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="missed" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/dropped_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="dropped" />
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/cancled_tab"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="cancled"/>
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/rejected_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="rejected"/>
 
         </com.google.android.material.tabs.TabLayout>
 

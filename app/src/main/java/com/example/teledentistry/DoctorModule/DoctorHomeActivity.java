@@ -227,6 +227,7 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(DoctorHomeActivity.this, Doc_Account_Activity.class);
+                i.putExtra("doc_id", userId);
                 startActivity(i);
             }
         });

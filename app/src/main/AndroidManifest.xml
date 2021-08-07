@@ -36,7 +36,10 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PatientModule.SearchResultActivity"></activity>
+        <activity android:name=".PatientModule.PresciptionPatModuleActivity"></activity>
+        <activity android:name=".PatientModule.AppointmentJazzPayFinishSpecialistActivity" />
+        <activity android:name=".PatientModule.JazzCashPaymentActivity" />
+        <activity android:name=".PatientModule.SearchResultActivity" />
         <activity android:name=".DoctorModule.TermsAndConditionActivity" />
         <activity android:name=".DoctorModule.SettingActivity" />
         <activity android:name=".DoctorModule.AboutActivity_Doc" />
@@ -70,8 +73,6 @@
         <activity android:name=".PatientModule.FreeAppointmentActivty" />
         <activity android:name=".PatientModule.AppointmentEasyPaisaPaySpecialistActivity" />
         <activity android:name=".PatientModule.AppointmentJazzPaySpecialistActivity" />
-        <activity android:name=".PatientModule.AppointmentpayFinishSpecialistActivity" />
-        <activity android:name=".PatientModule.AppointmentCreditPaySpecialistActivity" />
         <activity android:name=".PatientModule.AppointPaymentMethodSpecialistActivity" />
         <activity android:name=".PatientModule.MyConsultationActivity" />
         <activity android:name=".PatientModule.ConfirmationAppoitnmentActivity" />
