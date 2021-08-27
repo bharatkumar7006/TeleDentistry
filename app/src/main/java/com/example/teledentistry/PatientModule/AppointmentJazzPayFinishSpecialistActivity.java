@@ -61,8 +61,6 @@ public class AppointmentJazzPayFinishSpecialistActivity extends AppCompatActivit
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gettingListOfBookedSlots();
-
                 Intent i = new Intent(AppointmentJazzPayFinishSpecialistActivity.this, JazzCashPaymentActivity.class);
                 //startActivity(new Intent(MainActivity.this, PaymentActivity.class));
                 i.putExtra("fee", fee);
@@ -87,6 +85,7 @@ public class AppointmentJazzPayFinishSpecialistActivity extends AppCompatActivit
             System.out.println("DateFn: ResponseCode:" + ResponseCode);
             if (ResponseCode.equals("000")) {
                 Toast.makeText(getApplicationContext(), "Payment Success", Toast.LENGTH_SHORT).show();
+                gettingListOfBookedSlots();
 
                 final Query reference1;
                 reference1 = FirebaseDatabase.getInstance().getReference("Doctors").orderByChild("phone_no").equalTo(numb);
@@ -190,7 +189,7 @@ public class AppointmentJazzPayFinishSpecialistActivity extends AppCompatActivit
 
                     databaseReference.updateChildren(hashMap1).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(AppointmentJazzPayFinishSpecialistActivity.this, "Data sat on firebase", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AppointmentJazzPayFinishSpecialistActivity.this, "Appointment Booked", Toast.LENGTH_SHORT).show();
                         }
                     });
 

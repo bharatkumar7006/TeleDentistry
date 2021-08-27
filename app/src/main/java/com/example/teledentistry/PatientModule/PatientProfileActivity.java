@@ -88,7 +88,7 @@ public class PatientProfileActivity extends AppCompatActivity {
                 emergencyPhoneNo_tv.setText(emergencyPhoneNo);
                 address_tv.setText(address);
 
-                Glide.with(PatientProfileActivity.this).load(snapshot.child("imageUrl").getValue()).into(patient_profile_iv);
+                Glide.with(getApplicationContext()).load(snapshot.child("imageUrl").getValue()).into(patient_profile_iv);
 
             }
 

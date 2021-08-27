@@ -51,7 +51,7 @@ public class Calender_and_Schedule_Activity extends AppCompatActivity implements
     Toolbar toolbar;
     TabLayout tabLayout;
     TabLayout.Tab tab;
-    TextView date_tv,eTime_tv,sTime_tv;
+    TextView date_tv,eTime_tv,sTime_tv, name_tv,designation_tv,address_tv;
     int sTime_hours,sTime_mints,eTime_hours,eTime_mints ;
     RecyclerView recyclerView;
     TimePickerDialog timePickerDialog;
@@ -75,6 +75,31 @@ public class Calender_and_Schedule_Activity extends AppCompatActivity implements
         recyclerView = findViewById(R.id.layout_list);
         addSlot_btn = findViewById(R.id.addSlot_btn);
         set_btn = findViewById(R.id.set_btn);
+        name_tv = findViewById(R.id.name_tv);
+        designation_tv = findViewById(R.id.designation_tv);
+        address_tv = findViewById(R.id.address_tv);
+
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        final String userId = user.getUid();
+        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Doctors").child(userId);
+
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                name_tv.setText(snapshot.child("full_name").getValue().toString());
+                designation_tv.setText(snapshot.child("speciality").getValue().toString());
+                address_tv.setText(snapshot.child("address").getValue().toString());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         list = new ArrayList<>();
         list2 = new ArrayList<>();

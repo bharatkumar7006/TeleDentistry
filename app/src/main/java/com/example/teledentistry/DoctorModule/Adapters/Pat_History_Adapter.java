@@ -67,7 +67,7 @@ public class Pat_History_Adapter extends FirebaseRecyclerAdapter<Pat_History_Mod
                 adapter.notifyDataSetChanged();
                 adapter.startListening();
 
-                dialog.getWindow().setLayout(70, WindowManager.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
                 dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
                 dialog.show();
 
